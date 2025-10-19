@@ -54,8 +54,27 @@ export const signUp = async (req, res) => {
     }
 };
 
-export const login = (req, res) => {
-    res.send('Login Route');
+export const login = async (req, res) => {
+    const { email, password } = req.body;
+    try {
+        const user = await User.findOne({ email: email });
+        if (!user) return res.status(400).json({ message: 'Invalid Credentails' });
+
+        const isPasswordCorrect = await bcrypt.compare(password, user.password);
+        if (!isPasswordCorrect) return res.status(400).json({ message: 'Invalid Credentails' });
+
+        generateToken(user._id, res);
+
+        res.status(200).json({
+            _id: user._id,
+            fullName: user.fullName,
+            email: user.email,
+            profilePic: user.profilePic,
+        });
+    } catch (error) {
+        console.log(`Error on Login Controller`, error.message);
+        res.status(500).json({ message: 'Internal Server Error' });
+    }
 };
 
 export const logout = (req, res) => {
