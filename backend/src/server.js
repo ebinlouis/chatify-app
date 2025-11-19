@@ -5,11 +5,13 @@ import messageRoutes from './routes/message.route.js';
 import { fileURLToPath } from 'url';
 import { connectDB } from './lib/db.js';
 import { ENV } from './lib/env.js';
+import cookieParser from 'cookie-parser';
 
 const PORT = ENV.PORT;
 
 const app = express();
 app.use(express.json());
+app.use(cookieParser());
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
