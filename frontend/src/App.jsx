@@ -1,7 +1,7 @@
 import React from 'react';
 
 const App = () => {
-    return <div>Hello World Heyy</div>;
+    return <div className="">Hello From React</div>;
 };
 
 export default App;
