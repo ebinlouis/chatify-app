@@ -6,9 +6,9 @@ import { Link } from 'react-router';
 
 const SignUp = () => {
     const [formData, setFormData] = useState({
-        fullName: 'e_test',
-        email: 'e_test@gmail.com',
-        password: 'e_test@gmail.coms',
+        fullName: '',
+        email: '',
+        password: '',
     });
 
     const { signup, isSignUp } = useAuthStore();
