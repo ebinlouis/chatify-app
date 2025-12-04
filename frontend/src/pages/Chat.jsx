@@ -5,7 +5,7 @@ const Chat = () => {
     const { authUser } = useAuthStore();
     return (
         <div>
-            Chat Page <h1>{authUser}</h1>
+            <h1>{authUser.fullName} Welcome to chat web application</h1>
         </div>
     );
 };

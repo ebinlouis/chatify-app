@@ -6,11 +6,18 @@ import { fileURLToPath } from 'url';
 import { connectDB } from './lib/db.js';
 import { ENV } from './lib/env.js';
 import cookieParser from 'cookie-parser';
+import cors from 'cors';
 
 const PORT = ENV.PORT;
 
 const app = express();
 app.use(express.json());
+app.use(
+    cors({
+        origin: ENV.CLIENT_URL,
+        credentials: true,
+    })
+);
 app.use(cookieParser());
 
 const __filename = fileURLToPath(import.meta.url);
