@@ -3,7 +3,6 @@ import {
     getAllChats,
     getAllContacts,
     getMessagesByUserId,
-    recieveMessage,
     sendMessage,
 } from '../controllers/message.controller.js';
 import { protectRoute } from '../middleware/auth.middleware.js';
