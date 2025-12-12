@@ -10,7 +10,7 @@ import ChatContainer from '../components/ChatContainer.jsx';
 import NoConversationPlaceholder from '../components/NoConversationPlaceholder.jsx';
 
 const Chat = () => {
-    const { activeTab } = useChatStore();
+    const { activeTab, selectedUser } = useChatStore();
     return (
         <div className="relative w-full max-w-6xl h-[800px]">
             <BorderAnimatedContainer>

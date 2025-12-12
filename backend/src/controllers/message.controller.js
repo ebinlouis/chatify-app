@@ -31,7 +31,7 @@ export const getAllChats = async (req, res) => {
         });
 
         const chatPartnersIds = [
-            ...new set(
+            ...new Set(
                 messages.map((msg) =>
                     msg.senderId === loggedUserId ? msg.receiverId : msg.senderId
                 )
@@ -42,7 +42,7 @@ export const getAllChats = async (req, res) => {
 
         res.status(200).json(chatPaterns);
     } catch (error) {
-        console.log(`Error Found on GetAllChats`, error.messages);
+        console.log(`Error Found on GetAllChats`, error.message);
         res.status(500).json({ message: 'Internal Server Error' });
     }
 };
