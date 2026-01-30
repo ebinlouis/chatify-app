@@ -7,16 +7,16 @@ import { connectDB } from './lib/db.js';
 import { ENV } from './lib/env.js';
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
+import { app, server } from './lib/socket.js';
 
 const PORT = ENV.PORT;
 
-const app = express();
 app.use(express.json({ limit: '5mb' }));
 app.use(
     cors({
         origin: ENV.CLIENT_URL,
         credentials: true,
-    })
+    }),
 );
 app.use(cookieParser());
 
@@ -33,7 +33,7 @@ if (ENV.NODE_ENV === 'production') {
         res.sendFile(path.join(__dirname, '../../frontend', 'dist', 'index.html'));
     });
 }
-app.listen(PORT, async () => {
+server.listen(PORT, async () => {
     await connectDB();
     console.log(`Server Running on port ${PORT}`);
 });
